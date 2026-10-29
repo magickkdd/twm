@@ -1,0 +1,15 @@
+# 凭据
+.env
+
+# 本地环境与实验产物（体积大，含视频/图像/API 响应缓存）
+.venv/
+runs/
+
+# 第三方仓库，按方案 A 并列存放；我们的改动见 twam/artifacts/reflectvlm_api.patch
+# 与可直接运行的 twam/artifacts/rp_code.zip
+reflect-vlm/
+google-research/
+
+__pycache__/
+*.pyc
+MUJOCO_LOG.TXT

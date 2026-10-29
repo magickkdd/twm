@@ -1,0 +1,20 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/home/czx/textworld-action-model-agent/reflect-vlm/roboworld/envs/mujoco/franka/franka_assembly.py:92: UserWarning: Unstable initial state
+  warnings.warn("Unstable initial state")
+`brick_7`(pink nail) is in hand.
+`brick_5`(green block) is in hand.
+`brick_5`(green block) is in hand.
+`brick_2`(pink block) is in hand.
+Max steps exceeded for aligning.
+`brick_2`(pink block) is in hand.
+`brick_6`(purple nail) is in hand.
+`brick_5`(gray block) is in hand.
+collected 15 (state, expert-action) pairs
+
+sensenova-6.8-flash-lite   seed=1000000 step=0 lat=  10.8s expert=pick up pink       got=pick up/brown
+sensenova-6.8-flash-lite   seed=1000000 step=1 lat=  19.5s expert=put down pink      got=insert/pink
+sensenova-6.8-flash-lite   seed=1000000 step=2 lat= 772.8s expert=pick up brown      got=None/None
+sensenova-6.8-flash-lite   seed=1000001 step=0 lat=   6.7s expert=pick up green      got=pick up/green

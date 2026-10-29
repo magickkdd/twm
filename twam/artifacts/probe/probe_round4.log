@@ -1,0 +1,38 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/home/czx/textworld-action-model-agent/reflect-vlm/roboworld/envs/mujoco/franka/franka_assembly.py:92: UserWarning: Unstable initial state
+  warnings.warn("Unstable initial state")
+`brick_7`(pink nail) is in hand.
+`brick_5`(green block) is in hand.
+`brick_5`(green block) is in hand.
+`brick_2`(pink block) is in hand.
+Max steps exceeded for aligning.
+`brick_2`(pink block) is in hand.
+`brick_6`(purple nail) is in hand.
+`brick_5`(gray block) is in hand.
+collected 15 (state, expert-action) pairs
+
+deepseek-v4.1-flash-1017   seed=1000000 step=0 lat=   8.4s expert=pick up pink       got=pick up/brown
+deepseek-v4.1-flash-1017   seed=1000000 step=1 lat=  13.3s expert=put down pink      got=insert/pink
+deepseek-v4.1-flash-1017   seed=1000000 step=2 lat=  15.6s expert=pick up brown      got=pick up/brown
+deepseek-v4.1-flash-1017   seed=1000001 step=0 lat=  11.9s expert=pick up green      got=pick up/green
+deepseek-v4.1-flash-1017   seed=1000001 step=1 lat=  14.2s expert=reorient green     got=pick up/green
+deepseek-v4.1-flash-1017   seed=1000001 step=2 lat=  15.9s expert=insert green       got=pick up/green
+deepseek-v4.1-flash-1017   seed=1000002 step=0 lat=  92.6s expert=pick up pink       got=pick up/purple
+deepseek-v4.1-flash-1017   seed=1000002 step=1 lat=  23.9s expert=insert pink        got=pick up/gray
+deepseek-v4.1-flash-1017   seed=1000002 step=2 lat=  20.5s expert=insert pink        got=pick up/purple
+deepseek-v4.1-flash-1017   seed=1000006 step=0 lat=  31.3s expert=pick up purple     got=pick up/purple
+deepseek-v4.1-flash-1017   seed=1000006 step=1 lat=  16.5s expert=put down purple    got=pick up/red
+deepseek-v4.1-flash-1017   seed=1000006 step=2 lat=  14.4s expert=pick up yellow     got=pick up/red
+deepseek-v4.1-flash-1017   seed=1000007 step=0 lat=  35.7s expert=pick up gray       got=pick up/gray
+deepseek-v4.1-flash-1017   seed=1000007 step=1 lat=  56.5s expert=put down gray      got=pick up/gray
+deepseek-v4.1-flash-1017   seed=1000007 step=2 lat=  63.6s expert=pick up red        got=pick up/gray
+
+=== probe summary ===
+                           n   p50   p95  max_lat  parse_rate  expert_match  errors
+model                                                                              
+deepseek-v4.1-flash-1017  15  16.5  72.3     92.6         1.0      0.266667       0
+
+wrote /home/czx/textworld-action-model-agent/twam/artifacts/probe/probe_results.jsonl
