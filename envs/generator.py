@@ -7,8 +7,8 @@ import random
 import glob
 import pathlib
 
-from twam.envs.xml_utils import set_attributes, create_element, XmlMaker
-from twam.envs.mujoco.utils.rotation import euler2quat
+from envs.xml_utils import set_attributes, create_element, XmlMaker
+from envs.mujoco.utils.rotation import euler2quat
 
 ASSETS_DIR = pathlib.Path(__file__).parent.resolve() / "assets"
 

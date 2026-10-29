@@ -9,15 +9,15 @@ import copy
 import numpy as np
 import imageio
 
-from twam.utils.config import define_flags, get_user_flags
-from twam.utils.logger import WandBLogger, set_random_seed
-from twam.envs.generator import generate_xml
-from twam.envs.asset_path_utils import full_path_for
-from twam.envs.mujoco.franka.franka_assembly import (
+from utils.config import define_flags, get_user_flags
+from utils.logger import WandBLogger, set_random_seed
+from envs.generator import generate_xml
+from envs.asset_path_utils import full_path_for
+from envs.mujoco.franka.franka_assembly import (
     FrankaAssemblyEnv, AssemblyOracle
 )
-from twam.agent.oracle import OracleAgent
-from twam.agent.utils import parse_act_txt, get_prompt
+from agent.oracle import OracleAgent
+from agent.utils import parse_act_txt, get_prompt
 
 FLAGS = flags.FLAGS
 
@@ -134,7 +134,7 @@ def main(_):
     # initialize agent
     agent = None
     if FLAGS.agent_type == "discovery":
-        from twam.agent.discovery import DiscoveryAgent
+        from agent.discovery import DiscoveryAgent
         agent = DiscoveryAgent(model=FLAGS.model_path,
                                cache_dir=FLAGS.api_cache_dir or FLAGS.save_dir)
 

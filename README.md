@@ -18,7 +18,7 @@
 
 ## 当前方法
 
-`twam/run.py` 已实现完整的规划闭环：
+`run.py` 已实现完整的规划闭环：
 
 1. **提议**：API 多模态模型根据目标图、当前图与历史动作提出下一步动作；
 2. **预测**：在 MuJoCo 中执行候选动作并回滚，得到未来观测；
@@ -32,16 +32,20 @@
 - 规划 / 反思 / 执行闭环可运行，支持 API planner 的响应缓存、跨进程限速与失败重试。
 - 实验侧使用 100 个 hard 积木装配任务，并提供 expert、l1、l2、l3 四档对照与多分片执行。
 
-## 仓库结构
+## 代码结构
 
 ```
 .
-├── README.md
-├── .gitignore
-└── twam/         主代码：管线入口、planner、MuJoCo 环境与场景资产
+├── run.py        管线入口
+├── agent/        planner / oracle / 提示词
+├── envs/         MuJoCo 装配环境与场景资产
+├── utils/        flags 与日志
+└── .gitignore
 ```
 
-模块说明见 [twam/README.md](twam/README.md)。
+- `agent/` — `discovery.py`（API planner 适配层）、`oracle.py`（专家动作）、`utils.py`（提示词与动作解析）。
+- `envs/` — 场景生成、XML 构造、Franka 装配环境，以及 `assets/`（Franka 网格、纹理、对象模型）。
+- `utils/` — absl flags 与 wandb logger。
 
 ## 快速开始
 
@@ -58,7 +62,7 @@ pip install 'mujoco==3.1.2' 'gym==0.26.2' 'numpy<2' 'setuptools<81' \
     'openai' 'cloudpickle' 'wandb==0.16.2'
 
 export MUJOCO_GL=osmesa
-python -m twam.run \
+python run.py \
     --agent_type=random --level=medium --seed=42 --n_trajs=1 --max_steps=2 \
     --record=False --oracle_prob=0 --revise_action=False \
     --save_dir=runs/smoke --logging.online=False

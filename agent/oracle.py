@@ -1,5 +1,5 @@
 import numpy as np
-from twam.envs.mujoco.franka.franka_assembly import FrankaAssemblyEnv, AssemblyOracle
+from envs.mujoco.franka.franka_assembly import FrankaAssemblyEnv, AssemblyOracle
 
 class OracleAgent(object):
 

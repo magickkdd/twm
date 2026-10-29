@@ -7,7 +7,7 @@ from os import path
 import gym
 import mujoco
 
-from twam.envs.mujoco.utils import rotation as R
+from envs.mujoco.utils import rotation as R
 
 
 class MujocoEnv(gym.Env, abc.ABC):

@@ -1,10 +1,10 @@
 import warnings
 import numpy as np
 
-from twam.envs.asset_path_utils import full_path_for
-from twam.envs.mujoco.franka.franka_env import FrankaEnv
-from twam.envs.mujoco.utils.rotation import euler2quat, quat2mat, mat2quat
-from twam.envs.generator import get_color_name
+from envs.asset_path_utils import full_path_for
+from envs.mujoco.franka.franka_env import FrankaEnv
+from envs.mujoco.utils.rotation import euler2quat, quat2mat, mat2quat
+from envs.generator import get_color_name
 
 
 class FrankaAssemblyEnv(FrankaEnv):

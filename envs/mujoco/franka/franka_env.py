@@ -8,10 +8,10 @@ from gym.spaces import Discrete
 import numpy as np
 from typing import List
 
-from twam.envs.mujoco.mujoco_env import MujocoEnv
-from twam.envs.mujoco.utils.rotation import axisangle2mat, euler2quat, mat2quat, euler2mat, quat2axisangle, mat2euler
-from twam.envs.mujoco.utils.transform import (get_rel_quat, get_rel_rotmat, get_rel_axisangle, rotate_quat, quat2mat, quat2euler)
-from twam.envs.mujoco.franka.control import DiffIKNullspaceController
+from envs.mujoco.mujoco_env import MujocoEnv
+from envs.mujoco.utils.rotation import axisangle2mat, euler2quat, mat2quat, euler2mat, quat2axisangle, mat2euler
+from envs.mujoco.utils.transform import (get_rel_quat, get_rel_rotmat, get_rel_axisangle, rotate_quat, quat2mat, quat2euler)
+from envs.mujoco.franka.control import DiffIKNullspaceController
 np.set_printoptions(precision=4)
 
 

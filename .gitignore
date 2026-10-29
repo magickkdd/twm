@@ -5,15 +5,15 @@
 .venv/
 runs/
 
-# 第三方仓库，按方案 A 并列存放；从它提取的主代码见 twam/，
+# 第三方仓库，按方案 A 并列存放；主代码见仓库根，
 # 上游改动与代码快照见 experiments/artifacts/upstream/
 reflect-vlm/
 google-research/
 
 # 运行时生成的临时场景 XML
-twam/envs/assets/tmp_*.xml
-twam/envs/assets/probe_*.xml
-twam/envs/assets/smoke_*.xml
+envs/assets/tmp_*.xml
+envs/assets/probe_*.xml
+envs/assets/smoke_*.xml
 
 __pycache__/
 *.pyc
