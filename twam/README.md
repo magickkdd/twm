@@ -1,46 +1,32 @@
-# TWAM — Text World-Action Model
+# twam — 主代码
 
-用 LLM 以**文本**形式预测机器人动作后的世界状态（TWM, Text World Model），并用预测结果辅助规划与研究。
+TWAM 的规划与仿真执行代码。项目介绍、研究问题、依赖安装与参考文献见 [`../README.md`](../README.md)。
 
-## 从这里开始
+## 模块
 
-| 内容 | 位置 |
-| --- | --- |
-| 研究方向、核心假设、两条技术路线、实验方案、创新性判断 | [docs/twam_research_plan.md](docs/twam_research_plan.md) |
-| 三篇论文精读笔记索引（含全部导出图表） | [papers/index.md](papers/index.md) |
-| Reflective Planning（路线二基线，当前优先） | [papers/notes/reflective_planning.md](papers/notes/reflective_planning.md) |
-| RAP（世界模型 + 搜索的先验工作） | [papers/notes/rap.md](papers/notes/rap.md) |
-| Precondition/Effect 世界模型（文本状态表示候选） | [papers/notes/precondition_effect_wm.md](papers/notes/precondition_effect_wm.md) |
+- `run.py` — 主循环：建环境、提议动作、预测未来、反思修订、执行与记录。
+- `agent/` — `discovery.py`（API planner 适配层）、`oracle.py`（专家动作）、`utils.py`（提示词与动作解析）。
+- `envs/` — 场景生成、XML 构造、Franka 装配环境，以及 `assets/`（Franka 网格、纹理、对象模型）。
+- `utils/` — absl flags 与 wandb logger。
 
 ## 目录结构
 
 ```
 twam/
-├── docs/        研究计划与后续设计文档
-├── papers/
-│   ├── index.md   图表清单（36 张裁切图 + 页码 + 图注）
-│   ├── notes/     论文精读笔记（中文，含与 TWAM 的对接分析）
-│   ├── pdf/       三篇论文原文（笔记为摘要，完整内容以此为准）
-│   └── figures/   按论文分目录的图/表 PNG
-├── scripts/     探针、分片启动、汇总、Kaggle Notebook
-└── artifacts/   依赖锁、任务集、API 探针结果、可运行代码包与改动 patch
+├── run.py        管线入口（python -m twam.run）
+├── agent/        planner / oracle / 提示词
+├── envs/         MuJoCo 装配环境与场景资产
+└── utils/        flags 与日志
 ```
 
-同级目录（第三方代码，按方案 A 并列存放）：
+## 运行
 
-- [`../reflect-vlm/`](../reflect-vlm/) — Reflective Planning 官方实现，路线二基线。
-- [`../google-research/saycan/`](../google-research/saycan/) — SayCan，仅 README + notebook。
+在仓库根目录执行：
 
-## 笔记写作约定
-
-- 笔记为**改写式精读**，不复制原文长段落；关键数字均标注来源页，无法核实的写 `待核对`。
-- 每篇笔记末尾有「对 TWAM 的启示/改造点」小节，其中属于我们自己的提议会与论文内容明确区分。
-- 图片用相对路径嵌入（`../figures/<key>/...`），在仓库根目录或 VS Code / Obsidian 中预览均可正常渲染。
-
-## 本机环境备注
-
-- 系统 Python 3.10 无 pip，PDF 抽取所需的 PyMuPDF 1.28.2 以 wheel 解包方式装在
-  `~/.local/lib/python3.10/site-packages`（免 sudo，仅当前用户）。
-- `github.com` 可直连（2026-10-29 实测 `git ls-remote` 与 HTTPS 均通）；
-  `huggingface.co` 与 `hf-mirror.com` 实测不通，DDM 权重只能在 Kaggle 上下载。
-  PyPI 走 `mirrors.aliyun.com`。
+```bash
+export MUJOCO_GL=osmesa
+python -m twam.run \
+    --agent_type=random --level=medium --seed=42 --n_trajs=1 --max_steps=2 \
+    --record=False --oracle_prob=0 --revise_action=False \
+    --save_dir=runs/smoke --logging.online=False
+```
